@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+option go_package = "github.com/hufengyi11/resource-manager-assignment";
+
+message Assignment {
+    string id = 1;
+    string projectId = 2;
+    repeated string peopleId = 3;
+}
+
+message CreateAssignmentReq{
+    Assignment assignment = 1;
+}
+
+message CreateAssignmentRes{
+    Assignment assignment = 1;
+}
+
+message UpdateAssignmentReq{
+    Assignment assignment = 1;
+}
+
+message UpdateAssignmentRes {
+    Assignment assignment = 1; 
+}
+
+message ReadAssignmentByProjectReq {
+    int64 projectId = 1;
+}
+
+message ReadAssignmentByProjectRes {
+    Assignment assignment = 1;
+}
+
+message ReadAssignmentByPeopleReq {
+    int64 personId = 1;
+}
+
+message ReadAssignmentByPeopleRes {
+    repeated Assignment assignment = 1;
+}
+
+message DeleteAssignmentReq {
+    int64 id = 1;
+}
+
+message DeleteAssignmentRes {
+    bool success = 1;
+}
+
+service AssignmentService {
+    rpc CreateAssignment(CreateAssignmentReq) returns(CreateAssignmentRes);
+    rpc ReadByPeopleAssignment(ReadAssignmentByPeopleReq) returns(ReadAssignmentByPeopleRes);
+    rpc ReadByProjectAssignment(ReadAssignmentByProjectReq) returns (ReadAssignmentByProjectRes);
+    rpc UpdateAssignment(UpdateAssignmentReq) returns (UpdateAssignmentRes);
+    rpc DeleteAssignment(DeleteAssignmentReq) returns (DeleteAssignmentRes);
+}
+
+
+
+//add person to project 
+
+//remove person from project
+
+
